@@ -3,6 +3,7 @@ Capabilities.lua
 Utility
 
 Designed to check for functions
+Note to me: Use volt's documentation for functions OR the sUnc official website.
 ]]
 
 if game.RunService:IsStudio() then
@@ -21,13 +22,12 @@ local requiredchecks = {
 local function defaultcallback(res, functname)
 	if res == false then
 		warn(`[Capabilities] {functname} is not supported.`)
-		return
 	end
 	
 	-- Make sure the index is not nil or false. If it's value is false, it will not work.
 	if requiredchecks[functname] ~= nil then
 		requiredchecks[functname] = res
-		print(`[Capabilities] {functname} is supported`)
+		print(`[Capabilities] {functname}: {tostring(res)}`)
 	else
 		warn(`[Capabilities] Failed to find or set: {functname}`)
 	end
