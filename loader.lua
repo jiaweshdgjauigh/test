@@ -45,13 +45,15 @@ local Tab = Window:Tab({
 	Locked = false,
 })
 local CAPABILITIES = {}
+local capabilites_txt = ""
 local c_success, c_err = pcall(function()
-	CAPABILITIES = loadstring(game:HttpGet("https://raw.githubusercontent.com/jiaweshdgjauigh/test/refs/heads/main/util/capabilities.lua"))()
+	CAPABILITIES, capabilites_txt = loadstring(game:HttpGet("https://raw.githubusercontent.com/jiaweshdgjauigh/test/refs/heads/main/util/capabilities.lua"))()
 end)
 
 if not c_success then
 	warn(`[ERROR] {c_err}`)
 end
+_G.CAPABILITES = CAPABILITIES
 local function booltotext(val : boolean)
 	if val == true then
 		return "✅"
@@ -60,11 +62,9 @@ local function booltotext(val : boolean)
 	end
 end
 
-local capabilities_txt = `hookmetamethod: {booltotext(CAPABILITIES["hookmetamethod"])} \n hookfunction: {booltotext(CAPABILITIES["hookfunction"])} \n getconnections: {booltotext(CAPABILITIES["getconnections"])}`
-
 local Paragraph = Tab:Paragraph({
 	Title = "Supported executor functions",
-	Desc = capabilities_txt,
+	Desc = capabilites_txt,
 	Color = "Grey",
 	Image = "",
 	ImageSize = 30,
