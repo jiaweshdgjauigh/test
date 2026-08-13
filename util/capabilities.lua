@@ -12,12 +12,16 @@ end
 
 type Callback = (result : boolean) -> ()
 
-local res = {}
 local requiredchecks = {
 	["print"] = false, -- just a tes
 	["hookfunction"] = false, -- The value will only be true if the function is supported.
 	["hookmetamethod"] = false,
-	["getconnections"] = false
+	["getconnections"] = false,
+	
+	-- files
+	["readfile"] = false,
+	["writefile"] = false,
+	["setclipboard"] = false
 }
 local function defaultcallback(res, functname)
 	if res == false then
@@ -69,5 +73,21 @@ check("function", {hookfunction, "hookfunction"})
 check("function", {hookmetamethod, "hookmetamethod"})
 check("function", {getconnections, "getconnections"})
 check("function", {print, "print"})
+check("function", {readfile, "readfile"})
+check("function", {writefile, "writefile"})
+check("function", {setclipboard, "setclipboard"})
 
-return res -- Return the results
+local function booltotext(val : boolean)
+	if val == true then
+		return "✅"
+	else
+		return "❌"
+	end
+end
+
+local txt = ""
+for i, v in pairs(requiredchecks) do
+	txt = txt.. `{tostring(i)}: {booltotext(v)} \n`
+end
+
+return requiredchecks, txt -- Return the results
