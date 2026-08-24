@@ -5,7 +5,7 @@ Utility
 Designed to check for functions
 Note to me: Use volt's documentation for functions OR the sUnc official website.
 ]]
-
+print("Loaded capabilities v1")
 if game.RunService:IsStudio() then
 	warn("This script may not work as expected.")
 end
@@ -21,7 +21,8 @@ local requiredchecks = {
 	-- files
 	["readfile"] = false,
 	["writefile"] = false,
-	["setclipboard"] = false
+	["setclipboard"] = false,
+	["test"] = false
 }
 local function defaultcallback(res, functname)
 	if res == false then
