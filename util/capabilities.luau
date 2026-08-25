@@ -20,9 +20,14 @@ local requiredchecks = {
 	-- files
 	["readfile"] = false,
 	["writefile"] = false,
+	["getcustomasset"] = false,
+
+	-- misc
 	["setclipboard"] = false,
 	["gethwid"] = false,
-	["getcustomasset"] = false
+
+	-- environment
+	["getgenv"] = false
 }
 local function defaultcallback(res, functname)
 	if res == false then
@@ -78,6 +83,7 @@ check("function", {writefile, "writefile"})
 check("function", {setclipboard, "setclipboard"})
 check("function", {gethwid, "gethwid"})
 check("function", {getcustomasset, "getcustomasset"})
+check("function", {getgenv, "getgenv"})
 
 local function booltotext(val : boolean)
 	if val == true then
