@@ -1,6 +1,6 @@
 _G.Key = ""
 --// SERVICES //--
-
+print("v.1")
 local HTTPservice = game:GetService("HttpService")
 
 --// MODULE LOADER //--
@@ -8,6 +8,9 @@ local base_url = "https://raw.githubusercontent.com/jiaweshdgjauigh/test/refs/he
 
 local function ImportScript(path)
     local source = game:HttpGet(base_url.. path)
+    if not source then
+        warn("NO SOURCE: ".. path)
+    end
     return loadstring(source)()
 end
 
