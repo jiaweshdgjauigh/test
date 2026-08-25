@@ -5,7 +5,7 @@ Utility
 Designed to check for functions
 Note to me: Use volt's documentation for functions OR the sUnc official website.
 ]]
-print("Loaded capabilities v1")
+
 if game.RunService:IsStudio() then
 	warn("This script may not work as expected.")
 end
@@ -13,7 +13,6 @@ end
 type Callback = (result : boolean) -> ()
 
 local requiredchecks = {
-	["print"] = false, -- just a tes
 	["hookfunction"] = false, -- The value will only be true if the function is supported.
 	["hookmetamethod"] = false,
 	["getconnections"] = false,
@@ -22,7 +21,8 @@ local requiredchecks = {
 	["readfile"] = false,
 	["writefile"] = false,
 	["setclipboard"] = false,
-	["test"] = false
+	["gethwid"] = false,
+	["getcustomasset"] = false
 }
 local function defaultcallback(res, functname)
 	if res == false then
@@ -73,10 +73,11 @@ end
 check("function", {hookfunction, "hookfunction"})
 check("function", {hookmetamethod, "hookmetamethod"})
 check("function", {getconnections, "getconnections"})
-check("function", {print, "print"})
 check("function", {readfile, "readfile"})
 check("function", {writefile, "writefile"})
 check("function", {setclipboard, "setclipboard"})
+check("function", {gethwid, "gethwid"})
+check("function", {getcustomasset, "getcustomasset"})
 
 local function booltotext(val : boolean)
 	if val == true then
