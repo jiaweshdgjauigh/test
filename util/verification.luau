@@ -1,5 +1,5 @@
 local API = {}
-
+local HTTPservice = game:GetService("HttpService")
 API.Url = "https://hunterbot-production.up.railway.app/api/verify-key"
 
 function API.Verify(key : string, hwid : string) : boolean
