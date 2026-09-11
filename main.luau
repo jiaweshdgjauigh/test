@@ -1,25 +1,43 @@
 _G.Key = ""
---// SERVICES //--
+
 print("v.2")
+
+--// SERVICES //--
 local HTTPservice = game:GetService("HttpService")
 
---// MODULE LOADER //--
-local base_url = "https://raw.githubusercontent.com/jiaweshdgjauigh/test/refs/heads/main"
+--// IMPORTS //--
+
+local base_url = "https://raw.githubusercontent.com/jiaweshdgjauigh/test/refs/heads/main/"
 
 local function ImportScript(path)
-    local source = game:HttpGet(base_url.. path)
-    if not source then
-        warn("NO SOURCE: ".. path)
-    end
-    return loadstring(source)()
+	local url = base_url .. path
+	print("Importing:", url)
+
+	local success, source = pcall(function()
+		return game:HttpGet(url)
+	end)
+
+	if not success then
+		error("FAILED TO FETCH " .. path .. ": " .. tostring(source))
+	end
+
+	if not source or source == "" then
+		error("NO SOURCE: " .. path)
+	end
+
+	local fn, err = loadstring(source)
+
+	if not fn then
+		error("FAILED TO COMPILE " .. path .. ": " .. tostring(err))
+	end
+
+	return fn()
 end
 
-
---// MODULES //--
-const Modules = {--					   capabilities.luau
-	Capabilities = ImportScript("/util/capabilities.luau"),
-    Verification = ImportScript("/util/verification.luau"),
-    AssetLoader = ImportScript("/util/assetsloader.luau")
+local Modules = {
+	Capabilities = ImportScript("util/capabilities.luau"),
+	Verification = ImportScript("util/verification.luau"),
+	AssetLoader = ImportScript("util/assetsloader.luau")
 }
 
 local function ImportImage(path)
