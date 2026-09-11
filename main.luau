@@ -74,7 +74,8 @@ local function safeRead(path)
 	if success then
 		return result
 	else
-		warn("Failed to read:", result)
+		warn("Failed to read:", result, " - Overwriting path")
+		writefile(path)
 		return nil
 	end
 end
@@ -86,7 +87,7 @@ local function saveKey(k)
 end
 
 local function getKey()
-    local key = readfile("huntergui/key.json")
+    local key = safeRead("huntergui/key.json")
     if key then
         key = HTTPservice:JSONDecode(key)
         if key then
