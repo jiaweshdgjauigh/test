@@ -24,7 +24,7 @@ function module.fetchImage(url: string, fileName: string)
 		return nil
 	end
 
-	writefile(fileName, response.Body)
+	writefile(path, response.Body)
 
 	return getcustomasset(path)
 end
