@@ -89,7 +89,7 @@ end
 local function getKey()
     local key = safeRead("huntergui/key.json")
     if key then
-		local success, err = pcall(function()
+		pcall(function()
         	key = HTTPservice:JSONDecode(key)
 		end)
 		if not key or key == "" then
@@ -97,6 +97,10 @@ local function getKey()
 			return ""
 		end
         if key then
+			if type(key) ~= "table" then
+				warn("[KEY] Invalid key.json format.")
+				return ""
+			end
             return key.key
         end
     end
