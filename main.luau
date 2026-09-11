@@ -1,6 +1,6 @@
 _G.Key = ""
 --// SERVICES //--
-print("v.1")
+print("v.2")
 local HTTPservice = game:GetService("HttpService")
 
 --// MODULE LOADER //--
@@ -19,7 +19,7 @@ end
 const Modules = {
 	Capabilities = ImportScript("/util/capabilities.luau"),
     Verification = ImportScript("/util/verification.luau"),
-    AssetLoader = ImportScript("util/assetsloader.luau")
+    AssetLoader = ImportScript("/util/assetsloader.luau")
 }
 
 local function ImportImage(path)
