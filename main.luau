@@ -17,9 +17,9 @@ end
 
 --// MODULES //--
 const Modules = {
-	Capabilities = ImportScript("/utils/capabilities.luau"),
-    Verification = ImportScript("/utils/verification.luau"),
-    AssetLoader = ImportScript("utils/assetsloader.luau")
+	Capabilities = ImportScript("/util/capabilities.luau"),
+    Verification = ImportScript("/util/verification.luau"),
+    AssetLoader = ImportScript("util/assetsloader.luau")
 }
 
 local function ImportImage(path)
