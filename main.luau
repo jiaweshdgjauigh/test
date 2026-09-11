@@ -92,7 +92,7 @@ local function getKey()
 		local success, err = pcall(function()
         	key = HTTPservice:JSONDecode(key)
 		end)
-		if not key and err then
+		if not key or key == "" then
 			warn("[KEY] No saved key detected.")
 			return ""
 		end
