@@ -40,8 +40,8 @@ local Modules = {
 	AssetLoader = ImportScript("util/assetsloader.luau")
 }
 
-local function ImportImage(path)
-    local result = Modules.AssetLoader.fetchImage(path)
+local function ImportImage(path, fileName)
+    local result = Modules.AssetLoader.fetchImage(path, fileName)
     if result then
         return result
     end
@@ -271,7 +271,7 @@ button_cb.OnInvoke = function()
 		Duration = 3
 	})
 end
-Discord.Image = ImportImage(base_url.. "assets/discord.png", "discord.png")
+Discord.Image = ImportImage(`{base_url}assets/discord.png`, "discord.png")
 Discord.MouseButton1Click:Connect(function()
 	local success, response = pcall(function()
 		return request({
