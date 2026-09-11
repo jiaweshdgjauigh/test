@@ -4,7 +4,7 @@ print("v.2")
 local HTTPservice = game:GetService("HttpService")
 
 --// MODULE LOADER //--
-local base_url = "https://raw.githubusercontent.com/jiaweshdgjauigh/test/refs/heads/main/"
+local base_url = "https://raw.githubusercontent.com/jiaweshdgjauigh/test/refs/heads/main"
 
 local function ImportScript(path)
     local source = game:HttpGet(base_url.. path)
@@ -16,7 +16,7 @@ end
 
 
 --// MODULES //--
-const Modules = {
+const Modules = {--					   capabilities.luau
 	Capabilities = ImportScript("/util/capabilities.luau"),
     Verification = ImportScript("/util/verification.luau"),
     AssetLoader = ImportScript("/util/assetsloader.luau")
