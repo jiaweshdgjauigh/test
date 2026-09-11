@@ -54,10 +54,20 @@ local function ensurefolder(path)
 		makefolder(path)
 	end
 end
+local function ensurefile(path)
+	if not isfile(path) then
+		if isfolder(path) then
+			delfolder(path)
+			warn(`[FILES] {path} was a folder and has been deleted.`)
+		end
+
+		writefile(path)
+	end
+end
 
 ensurefolder("huntergui")
 ensurefolder("huntergui/assets")
-ensurefolder("huntergui/key.json")
+ensurefile("huntergui/key.json")
 
 local function safeRead(path)
 	local success, result = pcall(readfile, path)
