@@ -61,7 +61,7 @@ local function ensurefile(path)
 			warn(`[FILES] {path} was a folder and has been deleted.`)
 		end
 
-		writefile(path)
+		writefile(path, "")
 	end
 end
 
