@@ -93,6 +93,7 @@ local function getKey()
         	key = HTTPservice:JSONDecode(key)
 		end)
 		if not key and err then
+			warn("[KEY] No saved key detected.")
 			return ""
 		end
         if key then
