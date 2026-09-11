@@ -89,7 +89,12 @@ end
 local function getKey()
     local key = safeRead("huntergui/key.json")
     if key then
-        key = HTTPservice:JSONDecode(key)
+		local success, err = pcall(function()
+        	key = HTTPservice:JSONDecode(key)
+		end)
+		if not key and err then
+			return ""
+		end
         if key then
             return key.key
         end
